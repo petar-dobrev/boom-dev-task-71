@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 const Document = ({ title, content }) => {
-  const [showButton, setShowButton] = useState(false);
+  const [disableButton, setDisableButton] = useState(true);
 
   const handleScroll = (e) => {
     const bottom =
       e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
     if (bottom) {
-      setShowButton(true);
+      setDisableButton(false);
     }
   };
 
@@ -17,7 +17,7 @@ const Document = ({ title, content }) => {
       <p className="content" onScroll={handleScroll}>
         {content}
       </p>
-      {showButton && <button>I agree</button>}
+      <button disabled={disableButton}>I Agree</button>
     </div>
   );
 };
